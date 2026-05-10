@@ -40,6 +40,9 @@ export function createGameBackendClient(config) {
         p_session_token: sessionToken
       });
     },
+    getPublicLeaderboard() {
+      return invoke("get_public_leaderboard", {});
+    },
     submitRound1Answer(sessionToken, questionNumber, betAmount, answerText) {
       return invoke("submit_round1_answer", {
         p_session_token: sessionToken,
@@ -84,6 +87,11 @@ export function createGameBackendClient(config) {
       return invoke("activate_round2_team", {
         p_admin_code: adminCode,
         p_team_id: teamId
+      });
+    },
+    getJudgeSubmissionStatus(adminCode) {
+      return invoke("get_judge_submission_status", {
+        p_admin_code: adminCode
       });
     },
     publishRound2Result(adminCode, teamId) {
